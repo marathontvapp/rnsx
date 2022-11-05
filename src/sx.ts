@@ -106,9 +106,12 @@ export function makeStyles(
 }
 
 export function sx(context: StyleContextValue, theme: ThemeContextValue) {
-  return function (value: Sx) {
+  const fn = function (value: Sx) {
     return makeStyles(value, context, theme);
   };
+  fn.context = Object.freeze(context);
+  fn.theme = Object.freeze(theme);
+  return fn;
 }
 
 export function useSx() {
