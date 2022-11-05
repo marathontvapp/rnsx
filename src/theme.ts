@@ -1,6 +1,5 @@
 import type { DynamicColor } from './dynamic-color';
 import type { DynamicFont } from './dynamic-font';
-import type { Function } from 'ts-toolbelt';
 
 export type NumberValue = number | `${number}em`;
 export type NumberValueWithPercentage = NumberValue | `${number}%`;
@@ -18,8 +17,6 @@ export interface BaseTheme {
   extend?: Omit<BaseTheme, 'em' | 'extend'>;
 }
 
-export function makeTheme<T extends BaseTheme>(
-  theme: Function.Narrow<T>
-): Function.Narrow<T> {
+export function makeTheme<T extends BaseTheme>(theme: T): T {
   return theme;
 }
