@@ -107,6 +107,22 @@ export function ExampleComponent() {
 
 ## Recommendations
 
+### Create atom components
+
+Using the `styled` HOC, you can create "atom" components. An atom is the smallest building block of your design system, and with this HOC you can skip the `useSx` hook altogether!
+
+```tsx
+import { View as RNView } from 'react-native';
+import { styled } from 'rsnx';
+
+export const View = styled(RNView);
+
+// ...
+
+// Use `sx` prop directly! No more `useSx`!
+return <View sx={{ padding: { x: 3 } }} />;
+```
+
 ### Use hex values for colors
 
 It's recommended to use hex values for colors rather than their direct names. Why?

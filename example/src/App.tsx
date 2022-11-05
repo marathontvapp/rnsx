@@ -1,7 +1,14 @@
 import * as React from 'react';
 
 import { View, Text } from 'react-native';
-import { DynamicColor, DynamicFont, makeTheme, SxProvider, useSx } from 'rnsx';
+import {
+  DynamicColor,
+  DynamicFont,
+  makeTheme,
+  styled,
+  SxProvider,
+  useSx,
+} from 'rnsx';
 
 export const theme = makeTheme({
   em: 5,
@@ -38,6 +45,8 @@ declare module 'rnsx' {
   interface CustomTheme extends MyTheme {}
 }
 
+const SxView = styled(View);
+
 interface ExampleComponentProps {
   variant: 'success' | 'failure';
 }
@@ -45,11 +54,11 @@ function ExampleComponent({ variant }: ExampleComponentProps) {
   const sx = useSx();
 
   return (
-    <View
-      style={[
-        sx({ padding: { x: 3, y: 2 } }),
-        variant === 'success' && sx({ bg: 'success' }),
-        variant === 'failure' && sx({ bg: 'failure' }),
+    <SxView
+      sx={[
+        { padding: { x: 3, y: 2 } },
+        variant === 'success' && { bg: 'success' },
+        variant === 'failure' && { bg: 'failure' },
       ]}
     >
       <Text
@@ -70,7 +79,7 @@ function ExampleComponent({ variant }: ExampleComponentProps) {
         </Text>
         !
       </Text>
-    </View>
+    </SxView>
   );
 }
 
