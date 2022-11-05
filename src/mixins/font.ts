@@ -8,7 +8,9 @@ import type { StyleContextValue } from '../style-context';
 import type { NumberValue } from '../theme';
 import type { ThemeContextValue } from '../theme-context';
 
-export type FontFamily = keyof MergeTheme<CustomTheme>['fonts'];
+export type FontFamily = keyof MergeTheme<CustomTheme>['fonts'] extends never
+  ? undefined
+  : keyof MergeTheme<CustomTheme>['fonts'];
 
 export type FontValue<F extends FontFamily> = {
   family: F;
@@ -22,13 +24,15 @@ export function font<F extends FontFamily>(
   context: StyleContextValue,
   theme: ThemeContextValue
 ): TextStyle {
-  const family = theme.fonts[value.family];
   let fontFn: ReturnType<typeof DynamicFont['create']> | undefined;
-  if (value.weight) {
-    fontFn = (family as any)[value.weight];
-  } else if (Object.keys(family).length) {
-    const firstWeightKey = Object.keys(family)[0];
-    fontFn = family[firstWeightKey];
+  if (value.family) {
+    const family = theme.fonts[value.family];
+    if (value.weight) {
+      fontFn = (family as any)[value.weight];
+    } else if (Object.keys(family).length) {
+      const firstWeightKey = Object.keys(family)[0];
+      fontFn = family[firstWeightKey];
+    }
   }
 
   const fontSize = em(value.size, context, theme);

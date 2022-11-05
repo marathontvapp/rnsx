@@ -13,11 +13,7 @@ export type MergeTheme<Theme extends BaseTheme> = {
     'colors',
     DefaultTheme['colors'] & NonNullable<Theme['extend']>['colors']
   >;
-  fonts: AccessOrDefault<
-    Theme,
-    'fonts',
-    DefaultTheme['fonts'] & NonNullable<Theme['extend']>['fonts']
-  >;
+  fonts: Theme['fonts'];
   spacing: AccessOrDefault<
     Theme,
     'spacing',
@@ -47,10 +43,7 @@ export function mergeTheme<Theme extends BaseTheme>(theme: Theme) {
       ...defaultTheme.colors,
       ...(theme.extend?.colors ?? {}),
     },
-    fonts: theme.fonts ?? {
-      ...defaultTheme.fonts,
-      ...(theme.extend?.fonts ?? {}),
-    },
+    fonts: theme.fonts,
     spacing: theme.spacing ?? {
       ...defaultTheme.spacing,
       ...(theme.extend?.spacing ?? {}),
