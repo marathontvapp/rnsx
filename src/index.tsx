@@ -1,5 +1,5 @@
-export { color } from './functions/color';
-export { em } from './functions/em';
+export { color, ColorValue } from './functions/color';
+export { em, EmValue } from './functions/em';
 export { CustomTheme } from './custom-theme';
 export { defaultTheme, DefaultTheme } from './default-theme';
 export { DynamicColor } from './dynamic-color';
