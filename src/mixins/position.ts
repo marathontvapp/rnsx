@@ -11,9 +11,9 @@ export type PositionValue =
       x?: EmValue;
       y?: EmValue;
       t?: EmValue;
-      l?: EmValue;
+      s?: EmValue;
       b?: EmValue;
-      r?: EmValue;
+      e?: EmValue;
     };
 
 export function position(
@@ -23,15 +23,15 @@ export function position(
 ): ViewStyle {
   if (typeof value === 'object') {
     const t = value.t ?? value.y ?? value.inset;
-    const l = value.l ?? value.x ?? value.inset;
+    const s = value.s ?? value.x ?? value.inset;
     const b = value.b ?? value.y ?? value.inset;
-    const r = value.r ?? value.x ?? value.inset;
+    const e = value.e ?? value.x ?? value.inset;
     return {
       position: 'absolute',
       ...(t ? { top: em(t, context, theme) } : {}),
-      ...(l ? { left: em(l, context, theme) } : {}),
+      ...(s ? { start: em(s, context, theme) } : {}),
       ...(b ? { bottom: em(b, context, theme) } : {}),
-      ...(r ? { right: em(r, context, theme) } : {}),
+      ...(e ? { end: em(e, context, theme) } : {}),
     };
   } else {
     return {

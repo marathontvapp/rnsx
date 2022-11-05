@@ -10,9 +10,9 @@ export type MarginValue =
       x?: EmValue;
       y?: EmValue;
       t?: EmValue;
-      l?: EmValue;
+      s?: EmValue;
       b?: EmValue;
-      r?: EmValue;
+      e?: EmValue;
     };
 
 export function margin(
@@ -25,9 +25,9 @@ export function margin(
       ...(value.x ? { marginHorizontal: em(value.x, context, theme) } : {}),
       ...(value.y ? { marginVertical: em(value.y, context, theme) } : {}),
       ...(value.t ? { marginTop: em(value.t, context, theme) } : {}),
-      ...(value.l ? { marginLeft: em(value.l, context, theme) } : {}),
+      ...(value.s ? { marginStart: em(value.s, context, theme) } : {}),
       ...(value.b ? { marginBottom: em(value.b, context, theme) } : {}),
-      ...(value.r ? { marginRight: em(value.r, context, theme) } : {}),
+      ...(value.e ? { marginEnd: em(value.e, context, theme) } : {}),
     };
   } else {
     return {

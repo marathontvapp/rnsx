@@ -128,11 +128,13 @@ This functionality _only_ works when your colors are defined as hex values.
 
 ## What do you mean by "accessible"?
 
-`rnsx` takes two things (so far!) into consideration when it comes to accessibility:
+`rnsx` takes three things (so far!) into consideration when it comes to accessibility:
 
 - Light and dark mode: using the `DynamicColor` object, we can automatically switch between light and dark mode colors on both iOS and Android (as opposed to only iOS via the [DynamicColorIOS](https://reactnative.dev/docs/dynamiccolorios) API).
 
 - Bold text: when a user enables the bold text setting, the `DynamicFont` object will automatically switch between defined font families to present a bolder options for better legibility.
+
+- Internationalization: All directional tokens use `s` and `e` (standing for `start` and `end`) rather than left and right to support RTL languages.
 
 More accessibility considerations will be added in the future.
 

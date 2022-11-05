@@ -12,10 +12,10 @@ export type RoundedValue =
       l?: keyof MergeTheme<CustomTheme>['borderRadius'];
       b?: keyof MergeTheme<CustomTheme>['borderRadius'];
       r?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      tl?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      tr?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      bl?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      br?: keyof MergeTheme<CustomTheme>['borderRadius'];
+      ts?: keyof MergeTheme<CustomTheme>['borderRadius'];
+      te?: keyof MergeTheme<CustomTheme>['borderRadius'];
+      bs?: keyof MergeTheme<CustomTheme>['borderRadius'];
+      be?: keyof MergeTheme<CustomTheme>['borderRadius'];
     };
 
 export function rounded(
@@ -28,29 +28,29 @@ export function rounded(
       borderRadius: em(theme.borderRadius[value], context, theme),
     };
   } else {
-    const tl = value.tl ?? value.t;
-    const tr = value.tr ?? value.t;
-    const bl = value.bl ?? value.b;
-    const br = value.br ?? value.b;
+    const ts = value.ts ?? value.t;
+    const te = value.te ?? value.t;
+    const bs = value.bs ?? value.b;
+    const be = value.be ?? value.b;
     return {
-      ...(tl
+      ...(ts
         ? {
-            borderTopLeftRadius: em(theme.borderRadius[tl], context, theme),
+            borderTopStartRadius: em(theme.borderRadius[ts], context, theme),
           }
         : {}),
-      ...(tr
+      ...(te
         ? {
-            borderTopRightRadius: em(theme.borderRadius[tr], context, theme),
+            borderTopEndRadius: em(theme.borderRadius[te], context, theme),
           }
         : {}),
-      ...(bl
+      ...(bs
         ? {
-            borderBottomLeftRadius: em(theme.borderRadius[bl], context, theme),
+            borderBottomStartRadius: em(theme.borderRadius[bs], context, theme),
           }
         : {}),
-      ...(br
+      ...(be
         ? {
-            borderBottomRightRadius: em(theme.borderRadius[br], context, theme),
+            borderBottomEndRadius: em(theme.borderRadius[be], context, theme),
           }
         : {}),
     };

@@ -12,9 +12,9 @@ export type BorderValue = {
         x?: EmValue<NumberValue>;
         y?: EmValue<NumberValue>;
         t?: EmValue<NumberValue>;
-        l?: EmValue<NumberValue>;
+        s?: EmValue<NumberValue>;
         b?: EmValue<NumberValue>;
-        r?: EmValue<NumberValue>;
+        e?: EmValue<NumberValue>;
       };
   color:
     | ColorValue
@@ -22,9 +22,9 @@ export type BorderValue = {
         x?: ColorValue;
         y?: ColorValue;
         t?: ColorValue;
-        l?: ColorValue;
+        s?: ColorValue;
         b?: ColorValue;
-        r?: ColorValue;
+        e?: ColorValue;
       };
   style?: 'dashed' | 'dotted' | 'solid';
 };
@@ -38,13 +38,13 @@ export function border(
   if (typeof value.width === 'object') {
     const t = value.width.t ?? value.width.y;
     const b = value.width.b ?? value.width.y;
-    const l = value.width.l ?? value.width.x;
-    const r = value.width.r ?? value.width.x;
+    const s = value.width.s ?? value.width.x;
+    const e = value.width.e ?? value.width.x;
     widthStyle = {
       ...(t ? { borderTopWidth: em(t, context, theme) } : {}),
       ...(b ? { borderBottomWidth: em(b, context, theme) } : {}),
-      ...(l ? { borderLeftWidth: em(l, context, theme) } : {}),
-      ...(r ? { borderRightWidth: em(r, context, theme) } : {}),
+      ...(s ? { borderStartWidth: em(s, context, theme) } : {}),
+      ...(e ? { borderEndWidth: em(e, context, theme) } : {}),
     };
   } else {
     widthStyle = {
@@ -56,13 +56,13 @@ export function border(
   if (typeof value.color === 'object' && !('color' in value.color)) {
     const t = value.color.t ?? value.color.y;
     const b = value.color.b ?? value.color.y;
-    const l = value.color.l ?? value.color.x;
-    const r = value.color.r ?? value.color.x;
+    const s = value.color.s ?? value.color.x;
+    const e = value.color.e ?? value.color.x;
     colorStyle = {
       ...(t ? { borderTopColor: color(t, context, theme) } : {}),
       ...(b ? { borderBottomColor: color(b, context, theme) } : {}),
-      ...(l ? { borderLeftColor: color(l, context, theme) } : {}),
-      ...(r ? { borderRightColor: color(r, context, theme) } : {}),
+      ...(s ? { borderStartColor: color(s, context, theme) } : {}),
+      ...(e ? { borderEndColor: color(e, context, theme) } : {}),
     };
   } else {
     colorStyle = {

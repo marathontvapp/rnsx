@@ -10,9 +10,9 @@ export type PaddingValue =
       x?: EmValue;
       y?: EmValue;
       t?: EmValue;
-      l?: EmValue;
+      s?: EmValue;
       b?: EmValue;
-      r?: EmValue;
+      e?: EmValue;
     };
 
 export function padding(
@@ -25,9 +25,9 @@ export function padding(
       ...(value.x ? { paddingHorizontal: em(value.x, context, theme) } : {}),
       ...(value.y ? { paddingVertical: em(value.y, context, theme) } : {}),
       ...(value.t ? { paddingTop: em(value.t, context, theme) } : {}),
-      ...(value.l ? { paddingLeft: em(value.l, context, theme) } : {}),
+      ...(value.s ? { paddingStart: em(value.s, context, theme) } : {}),
       ...(value.b ? { paddingBottom: em(value.b, context, theme) } : {}),
-      ...(value.r ? { paddingRight: em(value.r, context, theme) } : {}),
+      ...(value.e ? { paddingEnd: em(value.e, context, theme) } : {}),
     };
   } else {
     return {
