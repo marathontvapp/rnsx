@@ -4,9 +4,9 @@ import type { StyleContextValue } from '../style-context';
 import type { NumberValueWithPercentage } from '../theme';
 import type { ThemeContextValue } from '../theme-context';
 
-export type EmValue =
-  | NumberValueWithPercentage
-  | keyof MergeTheme<CustomTheme>['spacing'];
+export type EmValue<
+  V extends NumberValueWithPercentage = NumberValueWithPercentage
+> = V | keyof MergeTheme<CustomTheme>['spacing'];
 
 export type EmReturnType<V extends EmValue> = V extends `${number}%`
   ? string

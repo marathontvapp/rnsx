@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 import { color, ColorValue } from './functions/color';
+import { border, BorderValue } from './mixins/border';
 import { font, FontFamily, FontValue } from './mixins/font';
 import { frame, FrameValue } from './mixins/frame';
 import { margin, MarginValue } from './mixins/margin';
@@ -14,6 +15,7 @@ import { ThemeContext, ThemeContextValue } from './theme-context';
 
 export interface Sx<F extends FontFamily> {
   bg?: ColorValue;
+  border?: BorderValue;
   color?: ColorValue;
   font?: FontValue<F>;
   frame?: FrameValue;
@@ -33,6 +35,7 @@ export function makeStyles(
     value.bg !== undefined && {
       backgroundColor: color(value.bg, context, theme),
     },
+    value.border !== undefined && border(value.border, context, theme),
     value.color !== undefined && {
       color: color(value.color, context, theme),
     },

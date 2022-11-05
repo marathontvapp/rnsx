@@ -28,10 +28,10 @@ export function rounded(
       borderRadius: em(theme.borderRadius[value], context, theme),
     };
   } else {
-    const tl = value.t ?? value.tl;
-    const tr = value.t ?? value.tr;
-    const bl = value.b ?? value.bl;
-    const br = value.b ?? value.br;
+    const tl = value.tl ?? value.t;
+    const tr = value.tr ?? value.t;
+    const bl = value.bl ?? value.b;
+    const br = value.br ?? value.b;
     return {
       ...(tl
         ? {
