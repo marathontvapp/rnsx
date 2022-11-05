@@ -16,11 +16,11 @@ export const defaultTheme = makeTheme({
   },
   spacing: {
     '2xs': '0.5em',
-    xs: '1em',
-    sm: '2em',
-    base: '3em',
-    lg: '5em',
-    xl: '7em',
+    'xs': '1em',
+    'sm': '2em',
+    'base': '3em',
+    'lg': '5em',
+    'xl': '7em',
     '2xl': '10em',
   },
   tracking: {

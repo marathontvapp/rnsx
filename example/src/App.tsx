@@ -1,31 +1,87 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'rnsx';
+import { View, Text } from 'react-native';
+import { DynamicColor, DynamicFont, makeTheme, SxProvider, useSx } from 'rnsx';
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+export const theme = makeTheme({
+  em: 5,
+  fonts: {
+    mori: {
+      400: DynamicFont.create({
+        regular: 'PPMori-Regular',
+        bold: 'PPMori-SemiBold',
+      }),
+    },
+    fraktion: {
+      600: DynamicFont.create({
+        regular: 'PPFraktion-SemiBold',
+        bold: 'PPFraktion-Bold',
+      }),
+    },
+  },
+  extend: {
+    tracking: {
+      loose: 1,
+    },
+    colors: {
+      success: DynamicColor.create({
+        light: '#95E99E',
+        dark: '#366B4B',
+      }),
+      failure: DynamicColor.create({
+        light: '#FF9781',
+        dark: '#983B35',
+      }),
+    },
+  },
+});
 
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
+export type MyTheme = typeof theme;
+
+declare module 'rnsx' {
+  interface CustomTheme extends MyTheme {}
+}
+
+interface ExampleComponentProps {
+  variant: 'success' | 'failure';
+}
+function ExampleComponent({ variant }: ExampleComponentProps) {
+  const sx = useSx();
 
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <View
+      style={[
+        sx({ padding: { x: 3, y: 2 } }),
+        variant === 'success' && sx({ bg: 'success' }),
+        variant === 'failure' && sx({ bg: 'failure' }),
+      ]}
+    >
+      <Text
+        style={sx({
+          font: { family: 'mori', weight: 400, size: '3em' },
+          color: 'black',
+        })}
+      >
+        This was an absolute{' '}
+        <Text
+          style={sx({
+            font: { family: 'fraktion', weight: 600, size: '3em' },
+            tracking: 'loose',
+            color: 'white',
+          })}
+        >
+          {variant}
+        </Text>
+        !
+      </Text>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+export default function App() {
+  return (
+    <SxProvider theme={theme}>
+      <ExampleComponent variant="success" />
+    </SxProvider>
+  );
+}
