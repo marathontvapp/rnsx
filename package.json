@@ -1,7 +1,7 @@
 {
   "name": "rnsx",
   "version": "0.1.0",
-  "description": "test",
+  "description": "Accessible styling solution for React Native",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
