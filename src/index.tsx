@@ -1,3 +1,7 @@
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+export { CustomTheme } from './custom-theme';
+export { defaultTheme, DefaultTheme } from './default-theme';
+export { DynamicColor } from './dynamic-color';
+export { DynamicFont } from './dynamic-font';
+export { SxProvider } from './sx-context';
+export { Sx, useSx } from './sx';
+export { ThemeProvider } from './theme-context';
