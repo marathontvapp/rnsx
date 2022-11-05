@@ -26,18 +26,14 @@ export const myTheme = makeTheme({
   em: 5,
   // Use top-level attributes to override the default theme
   fonts: {
-    mori: {
-      400: DynamicFont.create({
-        regular: 'PPMori-Regular',
-        bold: 'PPMori-SemiBold',
-      }),
-    },
-    fraktion: {
-      600: DynamicFont.create({
-        regular: 'PPFraktion-SemiBold',
-        bold: 'PPFraktion-Bold',
-      }),
-    },
+    'mori.400': DynamicFont.create({
+      regular: 'PPMori-Regular',
+      bold: 'PPMori-SemiBold',
+    }),
+    'fraktion.400': DynamicFont.create({
+      regular: 'PPFraktion-SemiBold',
+      bold: 'PPFraktion-Bold',
+    }),
   },
   // Use nested `extend` attributes to append to the default theme
   extend: {

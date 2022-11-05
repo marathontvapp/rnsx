@@ -1,4 +1,5 @@
 import { DynamicColor } from './dynamic-color';
+import { DynamicFont } from './dynamic-font';
 import { makeTheme } from './theme';
 
 export const defaultTheme = makeTheme({
@@ -6,6 +7,9 @@ export const defaultTheme = makeTheme({
   colors: {
     black: DynamicColor.create({ light: '#000000' }),
     white: DynamicColor.create({ light: '#ffffff' }),
+  },
+  fonts: {
+    default: DynamicFont.create({ regular: 'System' }),
   },
   spacing: {
     '2xs': '0.5em',

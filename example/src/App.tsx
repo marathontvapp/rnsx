@@ -6,18 +6,14 @@ import { DynamicColor, DynamicFont, makeTheme, SxProvider, useSx } from 'rnsx';
 export const theme = makeTheme({
   em: 5,
   fonts: {
-    mori: {
-      400: DynamicFont.create({
-        regular: 'PPMori-Regular',
-        bold: 'PPMori-SemiBold',
-      }),
-    },
-    fraktion: {
-      600: DynamicFont.create({
-        regular: 'PPFraktion-SemiBold',
-        bold: 'PPFraktion-Bold',
-      }),
-    },
+    mori: DynamicFont.create({
+      regular: 'PPMori-Regular',
+      bold: 'PPMori-SemiBold',
+    }),
+    fraktion: DynamicFont.create({
+      regular: 'PPFraktion-SemiBold',
+      bold: 'PPFraktion-Bold',
+    }),
   },
   extend: {
     tracking: {
@@ -58,14 +54,14 @@ function ExampleComponent({ variant }: ExampleComponentProps) {
     >
       <Text
         style={sx({
-          font: { family: 'mori', weight: 400, size: '3em' },
+          font: { family: 'mori', size: '3em' },
           color: 'black',
         })}
       >
         This was an absolute{' '}
         <Text
           style={sx({
-            font: { family: 'fraktion', weight: 600, size: '3em' },
+            font: { family: 'fraktion', size: '3em' },
             tracking: 'loose',
             color: 'white',
           })}

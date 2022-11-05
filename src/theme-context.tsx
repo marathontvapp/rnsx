@@ -6,9 +6,7 @@ import type { BaseTheme } from './theme';
 
 export type ThemeContextValue = Required<Omit<BaseTheme, 'extend'>>;
 
-export const ThemeContext = createContext<ThemeContextValue>(
-  defaultTheme as unknown as ThemeContextValue
-);
+export const ThemeContext = createContext<ThemeContextValue>(defaultTheme);
 
 interface ThemeProviderProps {
   theme: BaseTheme;

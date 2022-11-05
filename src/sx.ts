@@ -4,7 +4,7 @@ import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 import { color, ColorValue } from './functions/color';
 import { border, BorderValue } from './mixins/border';
 import { dir, DirValue } from './mixins/dir';
-import { font, FontFamily, FontValue } from './mixins/font';
+import { font, FontValue } from './mixins/font';
 import { frame, FrameValue } from './mixins/frame';
 import { items, ItemsValue } from './mixins/items';
 import { justify, JustifyValue } from './mixins/justify';
@@ -18,14 +18,14 @@ import { wrap, WrapValue } from './mixins/wrap';
 import { StyleContext, StyleContextValue } from './style-context';
 import { ThemeContext, ThemeContextValue } from './theme-context';
 
-export interface Sx<F extends FontFamily> {
+export interface Sx {
   aspect?: number;
   bg?: ColorValue;
   border?: BorderValue;
   color?: ColorValue;
   dir?: DirValue;
   flex?: number;
-  font?: FontValue<F>;
+  font?: FontValue;
   frame?: FrameValue;
   grow?: boolean;
   hidden?: boolean;
@@ -47,7 +47,7 @@ export interface Sx<F extends FontFamily> {
 }
 
 export function makeStyles(
-  value: Sx<any>,
+  value: Sx,
   context: StyleContextValue,
   theme: ThemeContextValue
 ) {
@@ -106,7 +106,7 @@ export function makeStyles(
 }
 
 export function sx(context: StyleContextValue, theme: ThemeContextValue) {
-  return function <F extends FontFamily>(value: Sx<F>) {
+  return function (value: Sx) {
     return makeStyles(value, context, theme);
   };
 }
