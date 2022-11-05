@@ -63,7 +63,7 @@ export const myTheme = makeTheme({
 
 Check out the [source code](https://github.com/joshpensky/rnsx/blob/main/src/default-theme.ts) to see theme defaults.
 
-### 1a. Update global types for Intellisense
+#### 1a. Update global types for Intellisense
 
 This makes it possible for the `sx` function to automagically fill in your configuration via Intellisense.
 

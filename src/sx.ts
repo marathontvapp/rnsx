@@ -7,6 +7,7 @@ import { frame, FrameValue } from './mixins/frame';
 import { margin, MarginValue } from './mixins/margin';
 import { padding, PaddingValue } from './mixins/padding';
 import { position, PositionValue } from './mixins/position';
+import { rounded, RoundedValue } from './mixins/rounded';
 import { tracking, TrackingValue } from './mixins/tracking';
 import { StyleContext, StyleContextValue } from './style-context';
 import { ThemeContext, ThemeContextValue } from './theme-context';
@@ -19,6 +20,7 @@ export interface Sx<F extends FontFamily> {
   margin?: MarginValue;
   padding?: PaddingValue;
   position?: PositionValue;
+  rounded?: RoundedValue;
   tracking?: TrackingValue;
 }
 
@@ -39,6 +41,7 @@ export function makeStyles(
     value.margin !== undefined && margin(value.margin, context, theme),
     value.padding !== undefined && padding(value.padding, context, theme),
     value.position !== undefined && position(value.position, context, theme),
+    value.rounded !== undefined && rounded(value.rounded, context, theme),
     value.tracking !== undefined && tracking(value.tracking, context, theme),
   ]);
 }

@@ -39,6 +39,17 @@ export const defaultTheme = makeTheme({
     relaxed: 1.625,
     loose: 2,
   },
+  borderRadius: {
+    'none': 0,
+    'xs': '0.125em',
+    'sm': '0.25em',
+    'md': '0.375em',
+    'lg': '0.5em',
+    'xl': '0.75em',
+    '2xl': '1em',
+    '3xl': '1.5em',
+    'full': 9999,
+  },
 });
 
 export type DefaultTheme = typeof defaultTheme;

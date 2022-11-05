@@ -15,6 +15,7 @@ export interface BaseTheme {
   tracking?: Record<string, NumberValue>;
   spacing?: Record<string, NumberValue>;
   leading?: Record<string, number>;
+  borderRadius?: Record<string, NumberValue>;
 
   extend?: Omit<BaseTheme, 'em' | 'extend'>;
 }

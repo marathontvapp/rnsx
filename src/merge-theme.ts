@@ -33,6 +33,11 @@ export type MergeTheme<Theme extends BaseTheme> = {
     'leading',
     DefaultTheme['leading'] & NonNullable<Theme['extend']>['leading']
   >;
+  borderRadius: AccessOrDefault<
+    Theme,
+    'borderRadius',
+    DefaultTheme['borderRadius'] & NonNullable<Theme['extend']>['borderRadius']
+  >;
 };
 
 export function mergeTheme<Theme extends BaseTheme>(theme: Theme) {
@@ -57,6 +62,10 @@ export function mergeTheme<Theme extends BaseTheme>(theme: Theme) {
     leading: theme.leading ?? {
       ...defaultTheme.leading,
       ...(theme.extend?.leading ?? {}),
+    },
+    borderRadius: theme.borderRadius ?? {
+      ...defaultTheme.borderRadius,
+      ...(theme.extend?.borderRadius ?? {}),
     },
   } as ThemeContextValue;
 }
