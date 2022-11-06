@@ -25,7 +25,7 @@ export function rounded(
     };
   } else {
     return {
-      ...(value.ts
+      ...(value.ts !== undefined
         ? {
             borderTopStartRadius: em(
               theme.borderRadius[value.ts],
@@ -34,7 +34,7 @@ export function rounded(
             ),
           }
         : {}),
-      ...(value.te
+      ...(value.te !== undefined
         ? {
             borderTopEndRadius: em(
               theme.borderRadius[value.te],
@@ -43,7 +43,7 @@ export function rounded(
             ),
           }
         : {}),
-      ...(value.bs
+      ...(value.bs !== undefined
         ? {
             borderBottomStartRadius: em(
               theme.borderRadius[value.bs],
@@ -52,7 +52,7 @@ export function rounded(
             ),
           }
         : {}),
-      ...(value.be
+      ...(value.be !== undefined
         ? {
             borderBottomEndRadius: em(
               theme.borderRadius[value.be],

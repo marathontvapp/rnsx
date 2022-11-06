@@ -22,12 +22,24 @@ export function padding(
 ): ViewStyle {
   if (typeof value === 'object') {
     return {
-      ...(value.x ? { paddingHorizontal: em(value.x, context, theme) } : {}),
-      ...(value.y ? { paddingVertical: em(value.y, context, theme) } : {}),
-      ...(value.t ? { paddingTop: em(value.t, context, theme) } : {}),
-      ...(value.s ? { paddingStart: em(value.s, context, theme) } : {}),
-      ...(value.b ? { paddingBottom: em(value.b, context, theme) } : {}),
-      ...(value.e ? { paddingEnd: em(value.e, context, theme) } : {}),
+      ...(value.x !== undefined
+        ? { paddingHorizontal: em(value.x, context, theme) }
+        : {}),
+      ...(value.y !== undefined
+        ? { paddingVertical: em(value.y, context, theme) }
+        : {}),
+      ...(value.t !== undefined
+        ? { paddingTop: em(value.t, context, theme) }
+        : {}),
+      ...(value.s !== undefined
+        ? { paddingStart: em(value.s, context, theme) }
+        : {}),
+      ...(value.b !== undefined
+        ? { paddingBottom: em(value.b, context, theme) }
+        : {}),
+      ...(value.e !== undefined
+        ? { paddingEnd: em(value.e, context, theme) }
+        : {}),
     };
   } else {
     return {

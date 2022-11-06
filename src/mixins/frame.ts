@@ -22,12 +22,20 @@ export function frame(
 ): ViewStyle {
   if (typeof value === 'object') {
     return {
-      ...(value.w ? { width: em(value.w, context, theme) } : {}),
-      ...(value.h ? { height: em(value.h, context, theme) } : {}),
-      ...(value.minW ? { minWidth: em(value.minW, context, theme) } : {}),
-      ...(value.minH ? { minHeight: em(value.minH, context, theme) } : {}),
-      ...(value.maxW ? { maxWidth: em(value.maxW, context, theme) } : {}),
-      ...(value.maxH ? { maxHeight: em(value.maxH, context, theme) } : {}),
+      ...(value.w !== undefined ? { width: em(value.w, context, theme) } : {}),
+      ...(value.h !== undefined ? { height: em(value.h, context, theme) } : {}),
+      ...(value.minW !== undefined
+        ? { minWidth: em(value.minW, context, theme) }
+        : {}),
+      ...(value.minH !== undefined
+        ? { minHeight: em(value.minH, context, theme) }
+        : {}),
+      ...(value.maxW !== undefined
+        ? { maxWidth: em(value.maxW, context, theme) }
+        : {}),
+      ...(value.maxH !== undefined
+        ? { maxHeight: em(value.maxH, context, theme) }
+        : {}),
     };
   } else {
     return {

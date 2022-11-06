@@ -22,12 +22,24 @@ export function margin(
 ): ViewStyle {
   if (typeof value === 'object') {
     return {
-      ...(value.x ? { marginHorizontal: em(value.x, context, theme) } : {}),
-      ...(value.y ? { marginVertical: em(value.y, context, theme) } : {}),
-      ...(value.t ? { marginTop: em(value.t, context, theme) } : {}),
-      ...(value.s ? { marginStart: em(value.s, context, theme) } : {}),
-      ...(value.b ? { marginBottom: em(value.b, context, theme) } : {}),
-      ...(value.e ? { marginEnd: em(value.e, context, theme) } : {}),
+      ...(value.x !== undefined
+        ? { marginHorizontal: em(value.x, context, theme) }
+        : {}),
+      ...(value.y !== undefined
+        ? { marginVertical: em(value.y, context, theme) }
+        : {}),
+      ...(value.t !== undefined
+        ? { marginTop: em(value.t, context, theme) }
+        : {}),
+      ...(value.s !== undefined
+        ? { marginStart: em(value.s, context, theme) }
+        : {}),
+      ...(value.b !== undefined
+        ? { marginBottom: em(value.b, context, theme) }
+        : {}),
+      ...(value.e !== undefined
+        ? { marginEnd: em(value.e, context, theme) }
+        : {}),
     };
   } else {
     return {

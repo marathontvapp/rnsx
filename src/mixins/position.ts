@@ -28,10 +28,10 @@ export function position(
     const e = value.e ?? value.x ?? value.inset;
     return {
       position: 'absolute',
-      ...(t ? { top: em(t, context, theme) } : {}),
-      ...(s ? { start: em(s, context, theme) } : {}),
-      ...(b ? { bottom: em(b, context, theme) } : {}),
-      ...(e ? { end: em(e, context, theme) } : {}),
+      ...(t !== undefined ? { top: em(t, context, theme) } : {}),
+      ...(s !== undefined ? { start: em(s, context, theme) } : {}),
+      ...(b !== undefined ? { bottom: em(b, context, theme) } : {}),
+      ...(e !== undefined ? { end: em(e, context, theme) } : {}),
     };
   } else {
     return {

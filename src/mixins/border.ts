@@ -41,10 +41,10 @@ export function border(
     const s = value.w.s ?? value.w.x;
     const e = value.w.e ?? value.w.x;
     widthStyle = {
-      ...(t ? { borderTopWidth: em(t, context, theme) } : {}),
-      ...(b ? { borderBottomWidth: em(b, context, theme) } : {}),
-      ...(s ? { borderStartWidth: em(s, context, theme) } : {}),
-      ...(e ? { borderEndWidth: em(e, context, theme) } : {}),
+      ...(t !== undefined ? { borderTopWidth: em(t, context, theme) } : {}),
+      ...(b !== undefined ? { borderBottomWidth: em(b, context, theme) } : {}),
+      ...(s !== undefined ? { borderStartWidth: em(s, context, theme) } : {}),
+      ...(e !== undefined ? { borderEndWidth: em(e, context, theme) } : {}),
     };
   } else {
     widthStyle = {
@@ -59,10 +59,14 @@ export function border(
     const s = value.color.s ?? value.color.x;
     const e = value.color.e ?? value.color.x;
     colorStyle = {
-      ...(t ? { borderTopColor: color(t, context, theme) } : {}),
-      ...(b ? { borderBottomColor: color(b, context, theme) } : {}),
-      ...(s ? { borderStartColor: color(s, context, theme) } : {}),
-      ...(e ? { borderEndColor: color(e, context, theme) } : {}),
+      ...(t !== undefined ? { borderTopColor: color(t, context, theme) } : {}),
+      ...(b !== undefined
+        ? { borderBottomColor: color(b, context, theme) }
+        : {}),
+      ...(s !== undefined
+        ? { borderStartColor: color(s, context, theme) }
+        : {}),
+      ...(e !== undefined ? { borderEndColor: color(e, context, theme) } : {}),
     };
   } else {
     colorStyle = {
