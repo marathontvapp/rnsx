@@ -20,7 +20,9 @@ export function color(
     return theme.colors[value](context);
   } else {
     const clampedOpacity = Math.min(1, Math.max(0, value.opacity));
-    const opacityHex = Math.floor(clampedOpacity * 255).toString(16);
+    const opacityHex = Math.floor(clampedOpacity * 255)
+      .toString(16)
+      .padStart(2, '0');
     return theme.colors[value.color](context) + opacityHex;
   }
 }
