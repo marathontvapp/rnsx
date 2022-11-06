@@ -8,10 +8,6 @@ import type { ThemeContextValue } from 'src/theme-context';
 export type RoundedValue =
   | keyof MergeTheme<CustomTheme>['borderRadius']
   | {
-      t?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      l?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      b?: keyof MergeTheme<CustomTheme>['borderRadius'];
-      r?: keyof MergeTheme<CustomTheme>['borderRadius'];
       ts?: keyof MergeTheme<CustomTheme>['borderRadius'];
       te?: keyof MergeTheme<CustomTheme>['borderRadius'];
       bs?: keyof MergeTheme<CustomTheme>['borderRadius'];
@@ -28,29 +24,41 @@ export function rounded(
       borderRadius: em(theme.borderRadius[value], context, theme),
     };
   } else {
-    const ts = value.ts ?? value.t;
-    const te = value.te ?? value.t;
-    const bs = value.bs ?? value.b;
-    const be = value.be ?? value.b;
     return {
-      ...(ts
+      ...(value.ts
         ? {
-            borderTopStartRadius: em(theme.borderRadius[ts], context, theme),
+            borderTopStartRadius: em(
+              theme.borderRadius[value.ts],
+              context,
+              theme
+            ),
           }
         : {}),
-      ...(te
+      ...(value.te
         ? {
-            borderTopEndRadius: em(theme.borderRadius[te], context, theme),
+            borderTopEndRadius: em(
+              theme.borderRadius[value.te],
+              context,
+              theme
+            ),
           }
         : {}),
-      ...(bs
+      ...(value.bs
         ? {
-            borderBottomStartRadius: em(theme.borderRadius[bs], context, theme),
+            borderBottomStartRadius: em(
+              theme.borderRadius[value.bs],
+              context,
+              theme
+            ),
           }
         : {}),
-      ...(be
+      ...(value.be
         ? {
-            borderBottomEndRadius: em(theme.borderRadius[be], context, theme),
+            borderBottomEndRadius: em(
+              theme.borderRadius[value.be],
+              context,
+              theme
+            ),
           }
         : {}),
     };

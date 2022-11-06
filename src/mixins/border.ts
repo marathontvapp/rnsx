@@ -6,7 +6,7 @@ import type { NumberValue } from 'src/theme';
 import type { ThemeContextValue } from 'src/theme-context';
 
 export type BorderValue = {
-  width:
+  w:
     | EmValue<NumberValue>
     | {
         x?: EmValue<NumberValue>;
@@ -35,11 +35,11 @@ export function border(
   theme: ThemeContextValue
 ): ViewStyle {
   let widthStyle: ViewStyle;
-  if (typeof value.width === 'object') {
-    const t = value.width.t ?? value.width.y;
-    const b = value.width.b ?? value.width.y;
-    const s = value.width.s ?? value.width.x;
-    const e = value.width.e ?? value.width.x;
+  if (typeof value.w === 'object') {
+    const t = value.w.t ?? value.w.y;
+    const b = value.w.b ?? value.w.y;
+    const s = value.w.s ?? value.w.x;
+    const e = value.w.e ?? value.w.x;
     widthStyle = {
       ...(t ? { borderTopWidth: em(t, context, theme) } : {}),
       ...(b ? { borderBottomWidth: em(b, context, theme) } : {}),
@@ -48,7 +48,7 @@ export function border(
     };
   } else {
     widthStyle = {
-      borderWidth: em(value.width, context, theme),
+      borderWidth: em(value.w, context, theme),
     };
   }
 
