@@ -1,6 +1,6 @@
 import { I18nManager, TextStyle } from 'react-native';
-import type { StyleContextValue } from 'src/style-context';
-import type { ThemeContextValue } from 'src/theme-context';
+import type { StyleContextValue } from '../style-context';
+import type { ThemeContextValue } from '../theme-context';
 
 // https://reactnative.dev/blog/2016/08/19/right-to-left-support-for-react-native-apps#limitations-and-future-plan
 

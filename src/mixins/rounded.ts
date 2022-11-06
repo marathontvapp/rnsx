@@ -1,9 +1,9 @@
 import type { ViewStyle } from 'react-native';
 import type { CustomTheme } from 'rnsx';
-import { em } from 'src/functions/em';
-import type { MergeTheme } from 'src/merge-theme';
-import type { StyleContextValue } from 'src/style-context';
-import type { ThemeContextValue } from 'src/theme-context';
+import { em } from '../functions/em';
+import type { MergeTheme } from '../merge-theme';
+import type { StyleContextValue } from '../style-context';
+import type { ThemeContextValue } from '../theme-context';
 
 export type RoundedValue =
   | keyof MergeTheme<CustomTheme>['borderRadius']

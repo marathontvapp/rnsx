@@ -1,9 +1,9 @@
 import type { ViewStyle } from 'react-native';
-import { color, ColorValue } from 'src/functions/color';
-import { em, EmValue } from 'src/functions/em';
-import type { StyleContextValue } from 'src/style-context';
-import type { NumberValue } from 'src/theme';
-import type { ThemeContextValue } from 'src/theme-context';
+import { color, ColorValue } from '../functions/color';
+import { em, EmValue } from '../functions/em';
+import type { StyleContextValue } from '../style-context';
+import type { NumberValue } from '../theme';
+import type { ThemeContextValue } from '../theme-context';
 
 export type BorderValue = {
   w:

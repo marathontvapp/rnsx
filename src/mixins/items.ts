@@ -1,6 +1,6 @@
 import type { ViewStyle } from 'react-native';
-import type { StyleContextValue } from 'src/style-context';
-import type { ThemeContextValue } from 'src/theme-context';
+import type { StyleContextValue } from '../style-context';
+import type { ThemeContextValue } from '../theme-context';
 
 export type ItemsValue = 'start' | 'end' | 'center' | 'baseline' | 'stretch';
 
