@@ -19,7 +19,7 @@ export function em<V extends EmValue>(
 ): EmReturnType<V> {
   if (typeof value === 'string') {
     if (value.endsWith('em')) {
-      return (Number.parseInt(value, 10) * theme.em) as EmReturnType<V>;
+      return (Number.parseFloat(value) * theme.em) as EmReturnType<V>;
     } else if (value.endsWith('%')) {
       return value as EmReturnType<V>;
     } else {
