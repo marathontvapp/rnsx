@@ -100,7 +100,6 @@ export function makeStyles(
     value.wrap !== undefined && wrap(value.wrap, context, theme),
     value.z !== undefined && {
       zIndex: value.z,
-      elevation: value.z,
     },
   ]);
 }
