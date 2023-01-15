@@ -16,10 +16,13 @@ export const StyleContext = createContext<StyleContextValue>({
   universalWeight: 'regular',
 });
 
-export interface StyleProviderProps {}
+export interface StyleProviderProps {
+  dangerouslySetColorScheme?: StyleContextValue['colorScheme'];
+}
 
 export function StyleProvider({
   children,
+  dangerouslySetColorScheme,
 }: PropsWithChildren<StyleProviderProps>) {
   // Check the current color scheme
   const colorScheme = useColorScheme();
@@ -47,7 +50,7 @@ export function StyleProvider({
   return (
     <StyleContext.Provider
       value={{
-        colorScheme: colorScheme ?? 'light',
+        colorScheme: dangerouslySetColorScheme ?? colorScheme ?? 'light',
         universalWeight: isBoldTextEnabled ? 'bold' : 'regular',
       }}
     >
