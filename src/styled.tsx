@@ -1,4 +1,4 @@
-import React, { ComponentType, forwardRef } from 'react';
+import React, { ComponentType, forwardRef, useMemo } from 'react';
 import type { Falsy, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Sx, useSx } from './sx';
 
@@ -19,12 +19,15 @@ export function styled<P extends WithStyledProps>(
     ({ sx: stylex, ...props }: P & StyledProps, ref) => {
       const sx = useSx();
 
-      let style: P['style'] = [];
-      if (Array.isArray(stylex)) {
-        style = stylex.flatMap((s) => (!s ? [] : sx(s)));
-      } else if (typeof stylex !== 'undefined') {
-        style = sx(stylex);
-      }
+      const style = useMemo(() => {
+        let s: P['style'] = [];
+        if (Array.isArray(stylex)) {
+          s = stylex.flatMap((object) => (!object ? [] : sx(object)));
+        } else if (typeof stylex !== 'undefined') {
+          s = sx(stylex);
+        }
+        return s;
+      }, [sx, stylex]);
 
       return (
         <WrappedComponent

@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren } from 'react';
+import React, { createContext, PropsWithChildren, useMemo } from 'react';
 
 import { defaultTheme } from './default-theme';
 import { mergeTheme } from './merge-theme';
@@ -16,7 +16,7 @@ export function ThemeProvider({
   children,
   theme,
 }: PropsWithChildren<ThemeProviderProps>) {
-  const mergedTheme = mergeTheme(theme);
+  const mergedTheme = useMemo(() => mergeTheme(theme), [theme]);
   return (
     <ThemeContext.Provider value={mergedTheme}>
       {children}

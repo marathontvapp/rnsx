@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 import { color, ColorValue } from './functions/color';
@@ -117,5 +117,8 @@ export function useSx() {
   const styleContext = useContext(StyleContext);
   const themeContext = useContext(ThemeContext);
 
-  return sx(styleContext, themeContext);
+  return useCallback(
+    (value: Sx) => sx(styleContext, themeContext)(value),
+    [styleContext, themeContext]
+  );
 }
