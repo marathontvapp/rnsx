@@ -2,7 +2,7 @@ import React, { ComponentType, forwardRef, useMemo } from 'react';
 import { Sx, useSx } from './sx';
 
 interface WithStyledProps {
-  style?: Record<string, any>;
+  style?: any;
 }
 
 export interface StyledProps {
