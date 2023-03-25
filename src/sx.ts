@@ -1,5 +1,4 @@
 import { useContext, useMemo } from 'react';
-import { StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 import { color, ColorValue } from './functions/color';
 import { border, BorderValue } from './mixins/border';
@@ -50,8 +49,8 @@ export function makeStyles(
   value: Sx,
   context: StyleContextValue,
   theme: ThemeContextValue
-) {
-  return StyleSheet.flatten<ViewStyle | TextStyle>([
+): Record<string, any> {
+  const declarations = [
     value.aspect !== undefined && {
       aspectRatio: value.aspect,
     },
@@ -101,7 +100,15 @@ export function makeStyles(
     value.z !== undefined && {
       zIndex: value.z,
     },
-  ]);
+  ];
+
+  return declarations.reduce((styles, current) => {
+    if (!current) {
+      return styles;
+    } else {
+      return { ...styles, ...current };
+    }
+  }, {} as Record<string, any>);
 }
 
 export function sx(context: StyleContextValue, theme: ThemeContextValue) {

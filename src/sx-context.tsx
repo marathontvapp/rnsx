@@ -1,21 +1,29 @@
 import React, { PropsWithChildren } from 'react';
 
-import { StyleContextValue, StyleProvider } from './style-context';
+import { StyleProvider } from './style-context';
 import type { BaseTheme } from './theme';
 import { ThemeProvider } from './theme-context';
 
 export interface SxProviderProps {
   theme: BaseTheme;
-  dangerouslySetColorScheme?: StyleContextValue['colorScheme'];
+  isRTL?: boolean;
+  colorScheme?: 'light' | 'dark';
+  universalWeight?: 'regular' | 'bold';
 }
 
 export function SxProvider({
   children,
   theme,
-  dangerouslySetColorScheme,
+  isRTL,
+  colorScheme,
+  universalWeight,
 }: PropsWithChildren<SxProviderProps>) {
   return (
-    <StyleProvider dangerouslySetColorScheme={dangerouslySetColorScheme}>
+    <StyleProvider
+      isRTL={isRTL}
+      colorScheme={colorScheme}
+      universalWeight={universalWeight}
+    >
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </StyleProvider>
   );

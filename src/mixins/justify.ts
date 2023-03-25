@@ -1,4 +1,3 @@
-import type { ViewStyle } from 'react-native';
 import type { StyleContextValue } from '../style-context';
 import type { ThemeContextValue } from '../theme-context';
 
@@ -16,7 +15,7 @@ export function justify(
   context: StyleContextValue,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   theme: ThemeContextValue
-): ViewStyle {
+) {
   if (value === 'start') {
     return { justifyContent: 'flex-start' };
   } else if (value === 'end') {

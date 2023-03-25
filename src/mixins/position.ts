@@ -1,5 +1,3 @@
-import type { ViewStyle } from 'react-native';
-
 import { em, EmValue } from '../functions/em';
 import type { StyleContextValue } from '../style-context';
 import type { ThemeContextValue } from '../theme-context';
@@ -20,7 +18,7 @@ export function position(
   value: PositionValue,
   context: StyleContextValue,
   theme: ThemeContextValue
-): ViewStyle {
+) {
   if (typeof value === 'object') {
     const t = value.t ?? value.y ?? value.inset;
     const s = value.s ?? value.x ?? value.inset;

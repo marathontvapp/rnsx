@@ -1,4 +1,3 @@
-import type { ViewStyle } from 'react-native';
 import type { CustomTheme } from 'rnsx';
 import { em } from '../functions/em';
 import type { MergeTheme } from '../merge-theme';
@@ -18,7 +17,7 @@ export function rounded(
   value: RoundedValue,
   context: StyleContextValue,
   theme: ThemeContextValue
-): ViewStyle {
+) {
   if (typeof value === 'string') {
     return {
       borderRadius: em(theme.borderRadius[value], context, theme),

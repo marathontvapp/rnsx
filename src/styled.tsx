@@ -1,15 +1,12 @@
 import React, { ComponentType, forwardRef, useMemo } from 'react';
-import type { Falsy, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { Sx, useSx } from './sx';
 
 interface WithStyledProps {
-  style?:
-    | StyleProp<ViewStyle | TextStyle>
-    | ((...state: any[]) => StyleProp<ViewStyle | TextStyle>);
+  style?: Record<string, any>;
 }
 
 export interface StyledProps {
-  sx?: Sx | (Sx | Falsy)[];
+  sx?: Sx | (Sx | undefined | null | false)[];
 }
 
 export function styled<P extends WithStyledProps>(

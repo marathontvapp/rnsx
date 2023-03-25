@@ -1,4 +1,3 @@
-import type { ViewStyle } from 'react-native';
 import type { StyleContextValue } from '../style-context';
 import type { ThemeContextValue } from '../theme-context';
 
@@ -10,7 +9,7 @@ export function dir(
   context: StyleContextValue,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   theme: ThemeContextValue
-): ViewStyle {
+) {
   if (value === 'col') {
     return { flexDirection: 'column' };
   } else if (value === 'col-reverse') {

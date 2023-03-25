@@ -1,5 +1,3 @@
-import type { ViewStyle } from 'react-native';
-
 import { em, EmValue } from '../functions/em';
 import type { StyleContextValue } from '../style-context';
 import type { ThemeContextValue } from '../theme-context';
@@ -19,7 +17,7 @@ export function frame(
   value: FrameValue,
   context: StyleContextValue,
   theme: ThemeContextValue
-): ViewStyle {
+) {
   if (typeof value === 'object') {
     return {
       ...(value.w !== undefined ? { width: em(value.w, context, theme) } : {}),

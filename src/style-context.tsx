@@ -1,57 +1,31 @@
-import React, {
-  createContext,
-  PropsWithChildren,
-  useEffect,
-  useState,
-} from 'react';
-import { AccessibilityInfo, useColorScheme } from 'react-native';
+import React, { createContext, PropsWithChildren } from 'react';
 
 export interface StyleContextValue {
+  isRTL: boolean;
   colorScheme: 'light' | 'dark';
   universalWeight: 'regular' | 'bold';
 }
 
 export const StyleContext = createContext<StyleContextValue>({
+  isRTL: false,
   colorScheme: 'light',
   universalWeight: 'regular',
 });
 
-export interface StyleProviderProps {
-  dangerouslySetColorScheme?: StyleContextValue['colorScheme'];
-}
+export interface StyleProviderProps extends Partial<StyleContextValue> {}
 
 export function StyleProvider({
   children,
-  dangerouslySetColorScheme,
+  isRTL,
+  colorScheme,
+  universalWeight,
 }: PropsWithChildren<StyleProviderProps>) {
-  // Check the current color scheme
-  const colorScheme = useColorScheme();
-
-  // Check if bold text is enabled
-  const [isBoldTextEnabled, setIsBoldTextEnabled] = useState(false);
-  useEffect(() => {
-    (async () => {
-      const enabled = await AccessibilityInfo.isBoldTextEnabled();
-      setIsBoldTextEnabled(enabled);
-    })();
-
-    const subscription = AccessibilityInfo.addEventListener(
-      'boldTextChanged',
-      (enabled) => {
-        setIsBoldTextEnabled(enabled);
-      }
-    );
-
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-
   return (
     <StyleContext.Provider
       value={{
-        colorScheme: dangerouslySetColorScheme ?? colorScheme ?? 'light',
-        universalWeight: isBoldTextEnabled ? 'bold' : 'regular',
+        isRTL: isRTL ?? false,
+        colorScheme: colorScheme ?? 'light',
+        universalWeight: universalWeight ?? 'regular',
       }}
     >
       {children}

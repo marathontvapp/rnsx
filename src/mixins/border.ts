@@ -1,4 +1,3 @@
-import type { ViewStyle } from 'react-native';
 import { color, ColorValue } from '../functions/color';
 import { em, EmValue } from '../functions/em';
 import type { StyleContextValue } from '../style-context';
@@ -33,8 +32,8 @@ export function border(
   value: BorderValue,
   context: StyleContextValue,
   theme: ThemeContextValue
-): ViewStyle {
-  let widthStyle: ViewStyle;
+) {
+  let widthStyle;
   if (typeof value.w === 'object') {
     const t = value.w.t ?? value.w.y;
     const b = value.w.b ?? value.w.y;
@@ -52,7 +51,7 @@ export function border(
     };
   }
 
-  let colorStyle: ViewStyle;
+  let colorStyle;
   if (typeof value.color === 'object' && !('color' in value.color)) {
     const t = value.color.t ?? value.color.y;
     const b = value.color.b ?? value.color.y;
