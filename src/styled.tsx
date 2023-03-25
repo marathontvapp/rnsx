@@ -30,7 +30,7 @@ export function styled<P extends WithStyledProps>(
         <WrappedComponent
           ref={ref}
           {...(props as P)}
-          style={[style, props.style]}
+          style={{ ...style, ...props.style }}
         />
       );
     }
